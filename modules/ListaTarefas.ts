@@ -1,2 +1,3 @@
-export const listaTarefas = []
-export let id_count = 0 + "abcd"
+import { Tarefa } from "./TarefaModelClass"
+
+export const listaTarefas : Tarefa [] = []

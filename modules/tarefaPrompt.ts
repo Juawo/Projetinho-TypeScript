@@ -36,7 +36,15 @@ export function promptVencimento(): Date {
             if(ano < dataAtual.getFullYear()){
                 console.log(`Data inválida! O ano precisa ser maior ou igual à ${dataAtual.getFullYear()}.`)
                 return promptVencimento()
+            } else if (dia > 31 || mes <= 0){
+                console.log(`Data inválida! O dia precisa ser de 1 a 31!`)
+                return promptVencimento()
             }
+            else if (mes > 12 || mes <=  0){
+                console.log(`Data inválida! O mês precisa ser de 1 a 12!`)
+                return promptVencimento()
+            } 
+
             if(isNaN(vencimento.getTime())){
                 console.log("O campo vencimento não pode ser vazio. ")
                 return promptVencimento()
@@ -47,5 +55,3 @@ export function promptVencimento(): Date {
     }
     return vencimento
 }
-
-
