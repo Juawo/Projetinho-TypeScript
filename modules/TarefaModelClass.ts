@@ -3,11 +3,11 @@ import { promptTitulo, promptPrioridade, promptVencimento } from "./tarefaPrompt
 import { id_count } from "./filesFuncoes/funcoesCRUD";
 
 export class Tarefa {
-    protected id : String;
-    titulo : String;
-    descricao : String | null;
+    protected id : string;
+    titulo : string;
+    descricao : string | null;
     vencimento : Date;
-    prioridade : String;
+    prioridade : string;
     dataCreate : Date;
     status : boolean;
     
@@ -26,6 +26,17 @@ export class Tarefa {
         console.log(`Tarefa ${this.titulo} marcada como conluida!`)
     }
     
+    exibirTarefa() {
+        let concluida = this.status === true ? "Concluida" : "Pendente"
+        console.log(`
+    Tarefa : ${this.titulo}
+    Status : ${concluida}
+    Prioridade : ${this.prioridade}
+    Vencimento : ${this.vencimento.toLocaleDateString("pt-BR")}
+    Data de Criação : ${this.dataCreate.toLocaleDateString("pt-BR")}
+    Descrição : ${this.descricao}
+    `)
+    }
 }
 
 
