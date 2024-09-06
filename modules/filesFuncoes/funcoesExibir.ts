@@ -8,11 +8,15 @@ export function listarTarefas(lista = listaTarefas) : void{
     }
 }
 export function resumoTarefas() : void{
-    if(listaTarefas.length > 0){console.log(`
+    if(listaTarefas.length > 0){
+        let pendentes = filtrarStatus(false,true,false)
+        let concluidas = filtrarStatus(false,false,true)
+
+        console.log(`
     --- Resumo das Tarefas ---
         Próxima tarefa a concluir : ${listaTarefas[0].titulo}
-        Quantidade de tarefas pendentes : 
-        Quantidade de tarefas concluidas : 
+        Quantidade de tarefas pendentes : ${pendentes?.length}
+        Quantidade de tarefas concluidas : ${concluidas?.length}
         Quantidade total de tarefas : ${listaTarefas.length}
     `)} else {
         console.log(`

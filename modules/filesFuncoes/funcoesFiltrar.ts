@@ -2,16 +2,26 @@ import { listaTarefas } from "../ListaTarefas";
 import { Tarefa } from "../TarefaModelClass";
 import { listarTarefas } from "./funcoesExibir";
 
-export function filtrarStatus(retorno = false){
-    let opcao = String(prompt("\n 1 - Filtrar atividades Pendentes\n 2 - Filtrar tarefas Concluídas\n Escolha : "))
-    if(opcao == "1"){
-        let listaPendete = listaTarefas.filter((tarefa) => tarefa.status === false)
-        retorno && listarTarefas(listaPendete)
-    } else if(opcao == "2"){
-        let listaConcluida = listaTarefas.filter((tarefa) => tarefa.status === true)
-        retorno && listarTarefas(listaConcluida)
-    } else {
-        console.log("\n Opção inválida, tente novamente!")
+export function filtrarStatus(retorno = false, retornoListaPendente = false, retornoListaConcluida = false){
+
+    if(retornoListaConcluida === false && retornoListaPendente === false){
+        let opcao = String(prompt("\n 1 - Filtrar atividades Pendentes\n 2 - Filtrar tarefas Concluídas\n Escolha : "))
+        if(opcao == "1"){
+            let listaPendete = listaTarefas.filter((tarefa) => tarefa.status === false)
+            retorno && listarTarefas(listaPendete)
+        } else if(opcao == "2"){
+            let listaConcluida = listaTarefas.filter((tarefa) => tarefa.status === true)
+            retorno && listarTarefas(listaConcluida)
+        } else {
+            console.log("\n Opção inválida, tente novamente!")
+        }
+    }
+
+    if(retornoListaPendente){
+        return listaTarefas.filter((tarefa) => tarefa.status === false)
+    } 
+    if(retornoListaConcluida){
+        return listaTarefas.filter((tarefa) => tarefa.status === true)
     }
 }
 
